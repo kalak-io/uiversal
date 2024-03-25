@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type      | Default |
-| ---------- | ---------- | ----------- | --------- | ------- |
-| `disabled` | `disabled` |             | `boolean` | `false` |
+| Property   | Attribute  | Description | Type       | Default     |
+| ---------- | ---------- | ----------- | ---------- | ----------- |
+| `callback` | --         |             | `Function` | `undefined` |
+| `disabled` | `disabled` |             | `boolean`  | `false`     |
 
 
 ## Slots

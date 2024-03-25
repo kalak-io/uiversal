@@ -6,56 +6,36 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+    interface UvButton {
+        "callback"?: Function;
+        "disabled": boolean;
     }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLUvButtonElement extends Components.UvButton, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLUvButtonElement: {
+        prototype: HTMLUvButtonElement;
+        new (): HTMLUvButtonElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "uv-button": HTMLUvButtonElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+    interface UvButton {
+        "callback"?: Function;
+        "disabled"?: boolean;
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
+        "uv-button": UvButton;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "uv-button": LocalJSX.UvButton & JSXBase.HTMLAttributes<HTMLUvButtonElement>;
         }
     }
 }

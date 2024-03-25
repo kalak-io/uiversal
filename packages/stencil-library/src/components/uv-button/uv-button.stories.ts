@@ -1,7 +1,7 @@
 import { fn } from '@storybook/test';
 
 export default {
-  title: 'Components/UvButton',
+  title: 'Components/Button',
   argTypes: {
     disabled: {
       control: {
