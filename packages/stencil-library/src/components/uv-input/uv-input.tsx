@@ -1,4 +1,4 @@
-import { AttachInternals, Component, Event, EventEmitter, Prop, h } from '@stencil/core';
+import { AttachInternals, Component, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 
 export type availableType = 'email' | 'password' | 'search' | 'tel' | 'text' | 'url';
 
@@ -12,6 +12,12 @@ export class UvInput {
 
   /** (optional) Associates the control with a form element */
   @Prop({ reflect: true }) form?: string = null;
+
+  /** (optional) Value of the id attribute of the <datalist> of autocomplete options */
+  @Prop() list?: string = null;
+
+  /** (optional) Id of the form control */
+  @Prop() inputId?: string = 'uv-checkbox';
 
   /** (optional) Maximum length (number of characters) of value */
   @Prop() maxlength?: number = null;
@@ -40,6 +46,9 @@ export class UvInput {
   /** (optional) Input type default: 'text' */
   @Prop() type?: availableType = 'text';
 
+  /** (optional) Options for the <datalist> */
+  @Prop() options?: string[] = [];
+
   /** (optional) The initial value of the control */
   @Prop({ mutable: true }) value: string = null;
 
@@ -59,9 +68,12 @@ export class UvInput {
 
   render() {
     return (
+    <Host>
       <input
         disabled={this.disabled}
         form={this.form}
+        list={this.list}
+        id={this.inputId}
         maxlength={this.maxlength}
         minlength={this.minlength}
         name={this.name}
@@ -74,6 +86,15 @@ export class UvInput {
         value={this.value}
         onInput={event => this.handleChange(event)}
       />
+      {this.list && this.options.length > 0 ?
+        <datalist id={this.list}>
+          {this.options.map(
+            option => <option value={option} />
+          )}
+        </datalist> :
+        null
+      }
+    </Host>
     );
   }
 }

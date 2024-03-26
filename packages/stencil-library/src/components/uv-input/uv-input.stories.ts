@@ -7,14 +7,20 @@ export default {
     form: {
       control: { type: 'text' },
     },
+    list: {
+      control: { type: 'text' },
+    },
     maxlength: {
       control: { type: 'number' },
     },
-    minlenght: {
+    minlength: {
       control: { type: 'number' },
     },
     name: {
       control: { type: 'text' },
+    },
+    options: {
+      control: { type: 'array' },
     },
     pattern: {
       control: { type: 'text' },
