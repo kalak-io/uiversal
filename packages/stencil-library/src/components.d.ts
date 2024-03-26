@@ -54,6 +54,28 @@ export namespace Components {
          */
         "value"?: string;
     }
+    interface UvColor {
+        /**
+          * (optional) Whether the form control is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * (optional) Associates the control with a form element
+         */
+        "form"?: string;
+        /**
+          * (optional) Id of the form control
+         */
+        "inputId"?: string;
+        /**
+          * (optional) Name of the form control. Submitted with the form as part of a name/value pair
+         */
+        "name"?: string;
+        /**
+          * (optional) The initial value of the control
+         */
+        "value"?: string;
+    }
     interface UvField {
         /**
           * (optional) The class css to apply to the label of the field.
@@ -157,6 +179,10 @@ export interface UvCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUvCheckboxElement;
 }
+export interface UvColorCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUvColorElement;
+}
 export interface UvInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUvInputElement;
@@ -188,6 +214,23 @@ declare global {
     var HTMLUvCheckboxElement: {
         prototype: HTMLUvCheckboxElement;
         new (): HTMLUvCheckboxElement;
+    };
+    interface HTMLUvColorElementEventMap {
+        "updated": string;
+    }
+    interface HTMLUvColorElement extends Components.UvColor, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUvColorElementEventMap>(type: K, listener: (this: HTMLUvColorElement, ev: UvColorCustomEvent<HTMLUvColorElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUvColorElementEventMap>(type: K, listener: (this: HTMLUvColorElement, ev: UvColorCustomEvent<HTMLUvColorElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUvColorElement: {
+        prototype: HTMLUvColorElement;
+        new (): HTMLUvColorElement;
     };
     interface HTMLUvFieldElement extends Components.UvField, HTMLStencilElement {
     }
@@ -232,6 +275,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "uv-button": HTMLUvButtonElement;
         "uv-checkbox": HTMLUvCheckboxElement;
+        "uv-color": HTMLUvColorElement;
         "uv-field": HTMLUvFieldElement;
         "uv-input": HTMLUvInputElement;
         "uv-radio": HTMLUvRadioElement;
@@ -283,6 +327,32 @@ declare namespace LocalJSX {
           * (optional) The value when the checkbox is checked
          */
         "trueValue"?: any;
+        /**
+          * (optional) The initial value of the control
+         */
+        "value"?: string;
+    }
+    interface UvColor {
+        /**
+          * (optional) Whether the form control is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * (optional) Associates the control with a form element
+         */
+        "form"?: string;
+        /**
+          * (optional) Id of the form control
+         */
+        "inputId"?: string;
+        /**
+          * (optional) Name of the form control. Submitted with the form as part of a name/value pair
+         */
+        "name"?: string;
+        /**
+          * Triggers when the value of checkbox is changed
+         */
+        "onUpdated"?: (event: UvColorCustomEvent<string>) => void;
         /**
           * (optional) The initial value of the control
          */
@@ -394,6 +464,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "uv-button": UvButton;
         "uv-checkbox": UvCheckbox;
+        "uv-color": UvColor;
         "uv-field": UvField;
         "uv-input": UvInput;
         "uv-radio": UvRadio;
@@ -405,6 +476,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "uv-button": LocalJSX.UvButton & JSXBase.HTMLAttributes<HTMLUvButtonElement>;
             "uv-checkbox": LocalJSX.UvCheckbox & JSXBase.HTMLAttributes<HTMLUvCheckboxElement>;
+            "uv-color": LocalJSX.UvColor & JSXBase.HTMLAttributes<HTMLUvColorElement>;
             "uv-field": LocalJSX.UvField & JSXBase.HTMLAttributes<HTMLUvFieldElement>;
             "uv-input": LocalJSX.UvInput & JSXBase.HTMLAttributes<HTMLUvInputElement>;
             "uv-radio": LocalJSX.UvRadio & JSXBase.HTMLAttributes<HTMLUvRadioElement>;
