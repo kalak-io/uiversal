@@ -5,11 +5,77 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { availableType } from "./components/uv-input/uv-input";
+export { availableType } from "./components/uv-input/uv-input";
 export namespace Components {
     interface UvButton {
         "callback"?: Function;
         "disabled": boolean;
     }
+    interface UvField {
+        /**
+          * (optional) The label of the field.
+         */
+        "label"?: string;
+        /**
+          * (optional) The mesage of the field.
+         */
+        "message"?: string;
+    }
+    interface UvInput {
+        /**
+          * (optional) Whether the form control is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * (optional) Associates the control with a form element
+         */
+        "form"?: string;
+        /**
+          * (optional) Maximum length (number of characters) of value
+         */
+        "maxlength"?: number;
+        /**
+          * (optional) Minimum length (number of characters) of value
+         */
+        "minlength"?: number;
+        /**
+          * (optional) Name of the form control. Submitted with the form as part of a name/value pair
+         */
+        "name"?: string;
+        /**
+          * (optional) Pattern the value must match to be valid
+         */
+        "pattern"?: string;
+        /**
+          * (optional) Text that appears in the form control when it has no value set
+         */
+        "placeholder"?: string;
+        /**
+          * (optional) The value is not editable
+         */
+        "readonly"?: boolean;
+        /**
+          * (optional) A value is required or must be checked for the form to be submittable
+         */
+        "required"?: boolean;
+        /**
+          * (optional) Size of the control
+         */
+        "size"?: number;
+        /**
+          * (optional) Input type default: 'text'
+         */
+        "type"?: availableType;
+        /**
+          * (optional) The initial value of the control
+         */
+        "value": string;
+    }
+}
+export interface UvInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUvInputElement;
 }
 declare global {
     interface HTMLUvButtonElement extends Components.UvButton, HTMLStencilElement {
@@ -18,8 +84,33 @@ declare global {
         prototype: HTMLUvButtonElement;
         new (): HTMLUvButtonElement;
     };
+    interface HTMLUvFieldElement extends Components.UvField, HTMLStencilElement {
+    }
+    var HTMLUvFieldElement: {
+        prototype: HTMLUvFieldElement;
+        new (): HTMLUvFieldElement;
+    };
+    interface HTMLUvInputElementEventMap {
+        "updated": string;
+    }
+    interface HTMLUvInputElement extends Components.UvInput, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUvInputElementEventMap>(type: K, listener: (this: HTMLUvInputElement, ev: UvInputCustomEvent<HTMLUvInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUvInputElementEventMap>(type: K, listener: (this: HTMLUvInputElement, ev: UvInputCustomEvent<HTMLUvInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUvInputElement: {
+        prototype: HTMLUvInputElement;
+        new (): HTMLUvInputElement;
+    };
     interface HTMLElementTagNameMap {
         "uv-button": HTMLUvButtonElement;
+        "uv-field": HTMLUvFieldElement;
+        "uv-input": HTMLUvInputElement;
     }
 }
 declare namespace LocalJSX {
@@ -27,8 +118,71 @@ declare namespace LocalJSX {
         "callback"?: Function;
         "disabled"?: boolean;
     }
+    interface UvField {
+        /**
+          * (optional) The label of the field.
+         */
+        "label"?: string;
+        /**
+          * (optional) The mesage of the field.
+         */
+        "message"?: string;
+    }
+    interface UvInput {
+        /**
+          * (optional) Whether the form control is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * (optional) Associates the control with a form element
+         */
+        "form"?: string;
+        /**
+          * (optional) Maximum length (number of characters) of value
+         */
+        "maxlength"?: number;
+        /**
+          * (optional) Minimum length (number of characters) of value
+         */
+        "minlength"?: number;
+        /**
+          * (optional) Name of the form control. Submitted with the form as part of a name/value pair
+         */
+        "name"?: string;
+        "onUpdated"?: (event: UvInputCustomEvent<string>) => void;
+        /**
+          * (optional) Pattern the value must match to be valid
+         */
+        "pattern"?: string;
+        /**
+          * (optional) Text that appears in the form control when it has no value set
+         */
+        "placeholder"?: string;
+        /**
+          * (optional) The value is not editable
+         */
+        "readonly"?: boolean;
+        /**
+          * (optional) A value is required or must be checked for the form to be submittable
+         */
+        "required"?: boolean;
+        /**
+          * (optional) Size of the control
+         */
+        "size"?: number;
+        /**
+          * (optional) Input type default: 'text'
+         */
+        "type"?: availableType;
+        /**
+          * (optional) The initial value of the control
+         */
+        "value"?: string;
+    }
     interface IntrinsicElements {
         "uv-button": UvButton;
+        "uv-field": UvField;
+        "uv-input": UvInput;
     }
 }
 export { LocalJSX as JSX };
@@ -36,6 +190,8 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "uv-button": LocalJSX.UvButton & JSXBase.HTMLAttributes<HTMLUvButtonElement>;
+            "uv-field": LocalJSX.UvField & JSXBase.HTMLAttributes<HTMLUvFieldElement>;
+            "uv-input": LocalJSX.UvInput & JSXBase.HTMLAttributes<HTMLUvInputElement>;
         }
     }
 }
