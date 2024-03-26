@@ -15,23 +15,23 @@ export default {
     },
     onClick: {
       action: 'onClick',
-    }
+    },
   },
   args: {
-    onClick: fn()
-  }
+    onClick: fn(),
+  },
 };
 
-const Template = (args) => `<uv-button disabled="${args.disabled}">${args.label}</uv-button>`;
+const Template = args => `<uv-button disabled="${args.disabled}">${args.label}</uv-button>`;
 
 export const Primary = Template.bind({});
 Primary.args = {
   label: 'Primary Button',
   disabled: false,
-}
+};
 
 export const Disabled = Template.bind({});
 Disabled.args = {
   label: 'Disabled Button',
   disabled: true,
-}
+};

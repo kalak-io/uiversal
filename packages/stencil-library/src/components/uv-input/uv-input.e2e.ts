@@ -1,4 +1,4 @@
-import { E2EElement, E2EPage, newE2EPage} from '@stencil/core/testing';
+import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
 
 const COMPONENT_NAME = 'uv-input';
 
@@ -10,7 +10,7 @@ describe('uv-input', () => {
     page = await newE2EPage();
     await page.setContent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`);
     element = await page.find(COMPONENT_NAME);
-  })
+  });
 
   it('renders', async () => {
     expect(element).not.toBeNull();
@@ -20,7 +20,7 @@ describe('uv-input', () => {
   it('sets disabled to true', async () => {
     expect(element).not.toHaveAttribute('disabled');
     await page.$eval(COMPONENT_NAME, elm => {
-      elm.disabled = true
+      elm.disabled = true;
     });
     await page.waitForChanges();
     expect(element).toHaveAttribute('disabled');

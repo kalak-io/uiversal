@@ -1,9 +1,6 @@
 # uv-input
 
-
-
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -22,14 +19,12 @@
 | `type`        | `type`        | (optional) Input type default: 'text'                                                     | `"email" \| "password" \| "search" \| "tel" \| "text" \| "url"` | `'text'` |
 | `value`       | `value`       | (optional) The initial value of the control                                               | `string`                                                        | `null`   |
 
-
 ## Events
 
 | Event     | Description | Type                  |
 | --------- | ----------- | --------------------- |
 | `updated` |             | `CustomEvent<string>` |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

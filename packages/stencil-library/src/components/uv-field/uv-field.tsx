@@ -3,7 +3,7 @@ import { Component, Prop, h } from '@stencil/core';
 @Component({
   tag: 'uv-field',
   styleUrl: 'uv-field.css',
-  formAssociated: true
+  formAssociated: true,
 })
 export class UvField {
   /** (optional) The label of the field. */
@@ -21,13 +21,9 @@ export class UvField {
 
     return (
       <div class="uv-field">
-        <slot name="label">
-          {label}
-        </slot>
+        <slot name="label">{label}</slot>
         <slot>Insert an input component</slot>
-        <slot name="message">
-          {message}
-        </slot>
+        <slot name="message">{message}</slot>
       </div>
     );
   }

@@ -2,45 +2,45 @@ export default {
   title: 'Components/Form/Input',
   argTypes: {
     disabled: {
-      control: { type: 'boolean'}
+      control: { type: 'boolean' },
     },
     form: {
-      control: { type: 'text' }
+      control: { type: 'text' },
     },
     maxlength: {
-      control: { type: 'number' }
+      control: { type: 'number' },
     },
     minlenght: {
-      control: { type: 'number' }
+      control: { type: 'number' },
     },
     name: {
-      control: { type: 'text' }
+      control: { type: 'text' },
     },
     pattern: {
-      control: { type: 'text' }
+      control: { type: 'text' },
     },
     placeholder: {
-      control: { type: 'text' }
+      control: { type: 'text' },
     },
     readonly: {
-      control: { type: 'boolean'}
+      control: { type: 'boolean' },
     },
     required: {
-      control: { type: 'boolean' }
+      control: { type: 'boolean' },
     },
     size: {
-      control: { type: 'number' }
+      control: { type: 'number' },
     },
     type: {
       name: 'type',
-      options: ['email', 'password','search', 'tel', 'text', 'url'],
+      options: ['email', 'password', 'search', 'tel', 'text', 'url'],
       control: { type: 'select' },
     },
     value: {
-      control: { type: 'text' }
-    }
-  }
-}
+      control: { type: 'text' },
+    },
+  },
+};
 
 const Template = (args: any) => `
   <uv-input
@@ -93,12 +93,12 @@ Standalone.args = {
   required: false,
   size: 0,
   type: 'text',
-  value: 'This is an input'
-}
+  value: 'This is an input',
+};
 
 export const UvField = UvFieldTemplate.bind({});
 UvField.args = {
   label: 'Field label',
   message: 'Field message',
-  ...Standalone.args
-}
+  ...Standalone.args,
+};

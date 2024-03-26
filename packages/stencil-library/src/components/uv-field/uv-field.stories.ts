@@ -12,14 +12,14 @@ export default {
       control: {
         type: 'text',
       },
-    }
-  }
-}
+    },
+  },
+};
 
-const Template = (args) => `<uv-field label="${args.label}" message="${args.message}" />`;
+const Template = args => `<uv-field label="${args.label}" message="${args.message}" />`;
 
 export const Default = Template.bind({});
 Default.args = {
   label: 'Label',
-  message: 'Message'
-}
+  message: 'Message',
+};

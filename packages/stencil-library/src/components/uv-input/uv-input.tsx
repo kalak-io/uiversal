@@ -1,10 +1,10 @@
-import { AttachInternals, Component, Event, EventEmitter, Host, Prop, h} from '@stencil/core';
+import { AttachInternals, Component, Event, EventEmitter, Prop, h } from '@stencil/core';
 
 export type availableType = 'email' | 'password' | 'search' | 'tel' | 'text' | 'url';
 
 @Component({
   tag: 'uv-input',
-  formAssociated: true
+  formAssociated: true,
 })
 export class UvInput {
   /** (optional) Whether the form control is disabled */
@@ -59,23 +59,21 @@ export class UvInput {
 
   render() {
     return (
-      <Host>
-        <input
-          disabled={this.disabled}
-          form={this.form}
-          maxlength={this.maxlength}
-          minlength={this.minlength}
-          name={this.name}
-          pattern={this.pattern}
-          placeholder={this.placeholder}
-          readonly={this.readonly}
-          required={this.required}
-          size={this.size}
-          type={this.type}
-          value={this.value}
-          onInput={event => this.handleChange(event)}
-        />
-      </Host>
+      <input
+        disabled={this.disabled}
+        form={this.form}
+        maxlength={this.maxlength}
+        minlength={this.minlength}
+        name={this.name}
+        pattern={this.pattern}
+        placeholder={this.placeholder}
+        readonly={this.readonly}
+        required={this.required}
+        size={this.size}
+        type={this.type}
+        value={this.value}
+        onInput={event => this.handleChange(event)}
+      />
     );
   }
 }
