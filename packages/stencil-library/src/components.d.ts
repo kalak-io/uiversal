@@ -174,6 +174,48 @@ export namespace Components {
          */
         "value"?: string;
     }
+    interface UvRange {
+        /**
+          * (optional) Whether the form control is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * (optional) Associates the control with a form element
+         */
+        "form"?: string;
+        /**
+          * (optional) Id of the form control
+         */
+        "inputId"?: string;
+        /**
+          * (optional) Value of the id attribute of the <datalist> of autocomplete options
+         */
+        "list"?: string;
+        /**
+          * (optional) Maximum value
+         */
+        "max"?: number;
+        /**
+          * (optional) Minimum value
+         */
+        "min"?: number;
+        /**
+          * (optional) Name of the form control. Submitted with the form as part of a name/value pair
+         */
+        "name"?: string;
+        /**
+          * (optional) Options for the <datalist>
+         */
+        "options"?: string[];
+        /**
+          * (optional) Step value
+         */
+        "step"?: string;
+        /**
+          * (optional) The initial value of the control
+         */
+        "value": string;
+    }
 }
 export interface UvCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -190,6 +232,10 @@ export interface UvInputCustomEvent<T> extends CustomEvent<T> {
 export interface UvRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUvRadioElement;
+}
+export interface UvRangeCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUvRangeElement;
 }
 declare global {
     interface HTMLUvButtonElement extends Components.UvButton, HTMLStencilElement {
@@ -272,6 +318,23 @@ declare global {
         prototype: HTMLUvRadioElement;
         new (): HTMLUvRadioElement;
     };
+    interface HTMLUvRangeElementEventMap {
+        "updated": string;
+    }
+    interface HTMLUvRangeElement extends Components.UvRange, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUvRangeElementEventMap>(type: K, listener: (this: HTMLUvRangeElement, ev: UvRangeCustomEvent<HTMLUvRangeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUvRangeElementEventMap>(type: K, listener: (this: HTMLUvRangeElement, ev: UvRangeCustomEvent<HTMLUvRangeElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUvRangeElement: {
+        prototype: HTMLUvRangeElement;
+        new (): HTMLUvRangeElement;
+    };
     interface HTMLElementTagNameMap {
         "uv-button": HTMLUvButtonElement;
         "uv-checkbox": HTMLUvCheckboxElement;
@@ -279,6 +342,7 @@ declare global {
         "uv-field": HTMLUvFieldElement;
         "uv-input": HTMLUvInputElement;
         "uv-radio": HTMLUvRadioElement;
+        "uv-range": HTMLUvRangeElement;
     }
 }
 declare namespace LocalJSX {
@@ -461,6 +525,52 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface UvRange {
+        /**
+          * (optional) Whether the form control is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * (optional) Associates the control with a form element
+         */
+        "form"?: string;
+        /**
+          * (optional) Id of the form control
+         */
+        "inputId"?: string;
+        /**
+          * (optional) Value of the id attribute of the <datalist> of autocomplete options
+         */
+        "list"?: string;
+        /**
+          * (optional) Maximum value
+         */
+        "max"?: number;
+        /**
+          * (optional) Minimum value
+         */
+        "min"?: number;
+        /**
+          * (optional) Name of the form control. Submitted with the form as part of a name/value pair
+         */
+        "name"?: string;
+        /**
+          * Triggers when the value of checkbox is changed
+         */
+        "onUpdated"?: (event: UvRangeCustomEvent<string>) => void;
+        /**
+          * (optional) Options for the <datalist>
+         */
+        "options"?: string[];
+        /**
+          * (optional) Step value
+         */
+        "step"?: string;
+        /**
+          * (optional) The initial value of the control
+         */
+        "value"?: string;
+    }
     interface IntrinsicElements {
         "uv-button": UvButton;
         "uv-checkbox": UvCheckbox;
@@ -468,6 +578,7 @@ declare namespace LocalJSX {
         "uv-field": UvField;
         "uv-input": UvInput;
         "uv-radio": UvRadio;
+        "uv-range": UvRange;
     }
 }
 export { LocalJSX as JSX };
@@ -480,6 +591,7 @@ declare module "@stencil/core" {
             "uv-field": LocalJSX.UvField & JSXBase.HTMLAttributes<HTMLUvFieldElement>;
             "uv-input": LocalJSX.UvInput & JSXBase.HTMLAttributes<HTMLUvInputElement>;
             "uv-radio": LocalJSX.UvRadio & JSXBase.HTMLAttributes<HTMLUvRadioElement>;
+            "uv-range": LocalJSX.UvRange & JSXBase.HTMLAttributes<HTMLUvRangeElement>;
         }
     }
 }
