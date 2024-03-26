@@ -72,9 +72,7 @@ export class UvCheckbox {
           onInput={() => this.handleChange()}
         />
         <label htmlFor={this.inputId}>
-          <slot>
-            {this.value}
-          </slot>
+          <slot />
         </label>
       </Host>
     );

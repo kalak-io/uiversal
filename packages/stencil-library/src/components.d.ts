@@ -122,6 +122,36 @@ export namespace Components {
          */
         "value": string;
     }
+    interface UvRadio {
+        /**
+          * (optional) Whether the form control is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * (optional) Associates the control with a form element
+         */
+        "form"?: string;
+        /**
+          * (optional) Id of the form control
+         */
+        "inputId"?: string;
+        /**
+          * (optional) Name of the form control. Submitted with the form as part of a name/value pair
+         */
+        "name"?: string;
+        /**
+          * (optional) The value of the form control
+         */
+        "nativeValue"?: any;
+        /**
+          * (optional) A value is required or must be checked for the form to be submittable
+         */
+        "required"?: boolean;
+        /**
+          * (optional) The initial value of the control
+         */
+        "value"?: string;
+    }
 }
 export interface UvCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -130,6 +160,10 @@ export interface UvCheckboxCustomEvent<T> extends CustomEvent<T> {
 export interface UvInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUvInputElement;
+}
+export interface UvRadioCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUvRadioElement;
 }
 declare global {
     interface HTMLUvButtonElement extends Components.UvButton, HTMLStencilElement {
@@ -178,11 +212,29 @@ declare global {
         prototype: HTMLUvInputElement;
         new (): HTMLUvInputElement;
     };
+    interface HTMLUvRadioElementEventMap {
+        "updated": string;
+    }
+    interface HTMLUvRadioElement extends Components.UvRadio, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUvRadioElementEventMap>(type: K, listener: (this: HTMLUvRadioElement, ev: UvRadioCustomEvent<HTMLUvRadioElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUvRadioElementEventMap>(type: K, listener: (this: HTMLUvRadioElement, ev: UvRadioCustomEvent<HTMLUvRadioElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUvRadioElement: {
+        prototype: HTMLUvRadioElement;
+        new (): HTMLUvRadioElement;
+    };
     interface HTMLElementTagNameMap {
         "uv-button": HTMLUvButtonElement;
         "uv-checkbox": HTMLUvCheckboxElement;
         "uv-field": HTMLUvFieldElement;
         "uv-input": HTMLUvInputElement;
+        "uv-radio": HTMLUvRadioElement;
     }
 }
 declare namespace LocalJSX {
@@ -305,11 +357,46 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface UvRadio {
+        /**
+          * (optional) Whether the form control is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * (optional) Associates the control with a form element
+         */
+        "form"?: string;
+        /**
+          * (optional) Id of the form control
+         */
+        "inputId"?: string;
+        /**
+          * (optional) Name of the form control. Submitted with the form as part of a name/value pair
+         */
+        "name"?: string;
+        /**
+          * (optional) The value of the form control
+         */
+        "nativeValue"?: any;
+        /**
+          * Triggers when the value of checkbox is changed
+         */
+        "onUpdated"?: (event: UvRadioCustomEvent<string>) => void;
+        /**
+          * (optional) A value is required or must be checked for the form to be submittable
+         */
+        "required"?: boolean;
+        /**
+          * (optional) The initial value of the control
+         */
+        "value"?: string;
+    }
     interface IntrinsicElements {
         "uv-button": UvButton;
         "uv-checkbox": UvCheckbox;
         "uv-field": UvField;
         "uv-input": UvInput;
+        "uv-radio": UvRadio;
     }
 }
 export { LocalJSX as JSX };
@@ -320,6 +407,7 @@ declare module "@stencil/core" {
             "uv-checkbox": LocalJSX.UvCheckbox & JSXBase.HTMLAttributes<HTMLUvCheckboxElement>;
             "uv-field": LocalJSX.UvField & JSXBase.HTMLAttributes<HTMLUvFieldElement>;
             "uv-input": LocalJSX.UvInput & JSXBase.HTMLAttributes<HTMLUvInputElement>;
+            "uv-radio": LocalJSX.UvRadio & JSXBase.HTMLAttributes<HTMLUvRadioElement>;
         }
     }
 }
