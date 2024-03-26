@@ -14,6 +14,14 @@ export namespace Components {
     }
     interface UvField {
         /**
+          * (optional) The class css to apply to the label of the field.
+         */
+        "classLabel"?: string;
+        /**
+          * (optional) The class css to apply to the mesage of the field.
+         */
+        "classMessage"?: string;
+        /**
           * (optional) The label of the field.
          */
         "label"?: string;
@@ -119,6 +127,14 @@ declare namespace LocalJSX {
         "disabled"?: boolean;
     }
     interface UvField {
+        /**
+          * (optional) The class css to apply to the label of the field.
+         */
+        "classLabel"?: string;
+        /**
+          * (optional) The class css to apply to the mesage of the field.
+         */
+        "classMessage"?: string;
         /**
           * (optional) The label of the field.
          */
