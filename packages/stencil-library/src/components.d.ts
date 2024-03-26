@@ -104,6 +104,14 @@ export namespace Components {
          */
         "form"?: string;
         /**
+          * (optional) Id of the form control
+         */
+        "inputId"?: string;
+        /**
+          * (optional) Value of the id attribute of the <datalist> of autocomplete options
+         */
+        "list"?: string;
+        /**
           * (optional) Maximum length (number of characters) of value
          */
         "maxlength"?: number;
@@ -115,6 +123,10 @@ export namespace Components {
           * (optional) Name of the form control. Submitted with the form as part of a name/value pair
          */
         "name"?: string;
+        /**
+          * (optional) Options for the <datalist>
+         */
+        "options"?: string[];
         /**
           * (optional) Pattern the value must match to be valid
          */
@@ -139,6 +151,56 @@ export namespace Components {
           * (optional) Input type default: 'text'
          */
         "type"?: availableType;
+        /**
+          * (optional) The initial value of the control
+         */
+        "value": string;
+    }
+    interface UvNumberinput {
+        /**
+          * (optional) Whether the form control is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * (optional) Associates the control with a form element
+         */
+        "form"?: string;
+        /**
+          * (optional) Id of the form control
+         */
+        "inputId"?: string;
+        /**
+          * (optional) Value of the id attribute of the <datalist> of autocomplete options
+         */
+        "list"?: string;
+        /**
+          * (optional) Maximum value
+         */
+        "max"?: number;
+        /**
+          * (optional) Minimum value
+         */
+        "min"?: number;
+        /**
+          * (optional) Name of the form control. Submitted with the form as part of a name/value pair
+         */
+        "name"?: string;
+        /**
+          * (optional) Options for the <datalist>
+         */
+        "options"?: string[];
+        /**
+          * (optional) Text that appears in the form control when it has no value set
+         */
+        "placeholder"?: string;
+        /**
+          * (optional) The value is not editable
+         */
+        "readonly"?: boolean;
+        /**
+          * (optional) Step value
+         */
+        "step"?: string;
         /**
           * (optional) The initial value of the control
          */
@@ -229,6 +291,10 @@ export interface UvInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUvInputElement;
 }
+export interface UvNumberinputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUvNumberinputElement;
+}
 export interface UvRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUvRadioElement;
@@ -301,6 +367,23 @@ declare global {
         prototype: HTMLUvInputElement;
         new (): HTMLUvInputElement;
     };
+    interface HTMLUvNumberinputElementEventMap {
+        "updated": string;
+    }
+    interface HTMLUvNumberinputElement extends Components.UvNumberinput, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUvNumberinputElementEventMap>(type: K, listener: (this: HTMLUvNumberinputElement, ev: UvNumberinputCustomEvent<HTMLUvNumberinputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUvNumberinputElementEventMap>(type: K, listener: (this: HTMLUvNumberinputElement, ev: UvNumberinputCustomEvent<HTMLUvNumberinputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUvNumberinputElement: {
+        prototype: HTMLUvNumberinputElement;
+        new (): HTMLUvNumberinputElement;
+    };
     interface HTMLUvRadioElementEventMap {
         "updated": string;
     }
@@ -341,6 +424,7 @@ declare global {
         "uv-color": HTMLUvColorElement;
         "uv-field": HTMLUvFieldElement;
         "uv-input": HTMLUvInputElement;
+        "uv-numberinput": HTMLUvNumberinputElement;
         "uv-radio": HTMLUvRadioElement;
         "uv-range": HTMLUvRangeElement;
     }
@@ -450,6 +534,14 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
+          * (optional) Id of the form control
+         */
+        "inputId"?: string;
+        /**
+          * (optional) Value of the id attribute of the <datalist> of autocomplete options
+         */
+        "list"?: string;
+        /**
           * (optional) Maximum length (number of characters) of value
          */
         "maxlength"?: number;
@@ -462,6 +554,10 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         "onUpdated"?: (event: UvInputCustomEvent<string>) => void;
+        /**
+          * (optional) Options for the <datalist>
+         */
+        "options"?: string[];
         /**
           * (optional) Pattern the value must match to be valid
          */
@@ -486,6 +582,60 @@ declare namespace LocalJSX {
           * (optional) Input type default: 'text'
          */
         "type"?: availableType;
+        /**
+          * (optional) The initial value of the control
+         */
+        "value"?: string;
+    }
+    interface UvNumberinput {
+        /**
+          * (optional) Whether the form control is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * (optional) Associates the control with a form element
+         */
+        "form"?: string;
+        /**
+          * (optional) Id of the form control
+         */
+        "inputId"?: string;
+        /**
+          * (optional) Value of the id attribute of the <datalist> of autocomplete options
+         */
+        "list"?: string;
+        /**
+          * (optional) Maximum value
+         */
+        "max"?: number;
+        /**
+          * (optional) Minimum value
+         */
+        "min"?: number;
+        /**
+          * (optional) Name of the form control. Submitted with the form as part of a name/value pair
+         */
+        "name"?: string;
+        /**
+          * Triggers when the value of checkbox is changed
+         */
+        "onUpdated"?: (event: UvNumberinputCustomEvent<string>) => void;
+        /**
+          * (optional) Options for the <datalist>
+         */
+        "options"?: string[];
+        /**
+          * (optional) Text that appears in the form control when it has no value set
+         */
+        "placeholder"?: string;
+        /**
+          * (optional) The value is not editable
+         */
+        "readonly"?: boolean;
+        /**
+          * (optional) Step value
+         */
+        "step"?: string;
         /**
           * (optional) The initial value of the control
          */
@@ -577,6 +727,7 @@ declare namespace LocalJSX {
         "uv-color": UvColor;
         "uv-field": UvField;
         "uv-input": UvInput;
+        "uv-numberinput": UvNumberinput;
         "uv-radio": UvRadio;
         "uv-range": UvRange;
     }
@@ -590,6 +741,7 @@ declare module "@stencil/core" {
             "uv-color": LocalJSX.UvColor & JSXBase.HTMLAttributes<HTMLUvColorElement>;
             "uv-field": LocalJSX.UvField & JSXBase.HTMLAttributes<HTMLUvFieldElement>;
             "uv-input": LocalJSX.UvInput & JSXBase.HTMLAttributes<HTMLUvInputElement>;
+            "uv-numberinput": LocalJSX.UvNumberinput & JSXBase.HTMLAttributes<HTMLUvNumberinputElement>;
             "uv-radio": LocalJSX.UvRadio & JSXBase.HTMLAttributes<HTMLUvRadioElement>;
             "uv-range": LocalJSX.UvRange & JSXBase.HTMLAttributes<HTMLUvRangeElement>;
         }
