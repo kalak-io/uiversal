@@ -1,4 +1,4 @@
-import { AttachInternals, Component, Event, Host, Prop, h} from '@stencil/core';
+import { AttachInternals, Component, Event, EventEmitter, Host, Prop, h} from '@stencil/core';
 
 export type availableType = 'email' | 'password' | 'search' | 'tel' | 'text' | 'url';
 

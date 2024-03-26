@@ -23,6 +23,13 @@
 | `value`       | `value`       | (optional) The initial value of the control                                               | `string`                                                        | `null`   |
 
 
+## Events
+
+| Event     | Description | Type                  |
+| --------- | ----------- | --------------------- |
+| `updated` |             | `CustomEvent<string>` |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
