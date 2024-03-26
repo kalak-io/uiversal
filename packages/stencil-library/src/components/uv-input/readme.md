@@ -2,6 +2,7 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property      | Attribute     | Description                                                                               | Type                                                            | Default  |
@@ -19,12 +20,14 @@
 | `type`        | `type`        | (optional) Input type default: 'text'                                                     | `"email" \| "password" \| "search" \| "tel" \| "text" \| "url"` | `'text'` |
 | `value`       | `value`       | (optional) The initial value of the control                                               | `string`                                                        | `null`   |
 
+
 ## Events
 
 | Event     | Description | Type                  |
 | --------- | ----------- | --------------------- |
 | `updated` |             | `CustomEvent<string>` |
 
----
 
-_Built with [StencilJS](https://stenciljs.com/)_
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

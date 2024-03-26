@@ -2,6 +2,7 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property       | Attribute       | Description                                                   | Type     | Default |
@@ -11,6 +12,7 @@
 | `label`        | `label`         | (optional) The label of the field.                            | `string` | `''`    |
 | `message`      | `message`       | (optional) The mesage of the field.                           | `string` | `''`    |
 
----
 
-_Built with [StencilJS](https://stenciljs.com/)_
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*
