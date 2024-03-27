@@ -32,6 +32,11 @@ export class UvFile {
   /** (optional) A value is required or must be checked for the form to be submittable */
   @Prop() required?: boolean = false;
 
+  /** (optional) The initial value of the control */
+  @Prop({ mutable: true }) value: string = null;
+
+  @AttachInternals() internals: ElementInternals;
+
   @Event() updated: EventEmitter<string>;
 
   handleChange(event) {

@@ -18,6 +18,7 @@
 | `multiple` | `multiple` | (optional) Whether to allow multiple values                                               | `boolean` | `false`     |
 | `name`     | `name`     | (optional) Name of the form control. Submitted with the form as part of a name/value pair | `string`  | `null`      |
 | `required` | `required` | (optional) A value is required or must be checked for the form to be submittable          | `boolean` | `false`     |
+| `value`    | `value`    | (optional) The initial value of the control                                               | `string`  | `null`      |
 
 
 ## Events

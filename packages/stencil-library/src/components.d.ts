@@ -131,6 +131,10 @@ export namespace Components {
           * (optional) A value is required or must be checked for the form to be submittable
          */
         "required"?: boolean;
+        /**
+          * (optional) The initial value of the control
+         */
+        "value": string;
     }
     interface UvInput {
         /**
@@ -622,6 +626,10 @@ declare namespace LocalJSX {
           * (optional) A value is required or must be checked for the form to be submittable
          */
         "required"?: boolean;
+        /**
+          * (optional) The initial value of the control
+         */
+        "value"?: string;
     }
     interface UvInput {
         /**
