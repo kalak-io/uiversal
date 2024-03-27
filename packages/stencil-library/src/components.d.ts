@@ -94,6 +94,44 @@ export namespace Components {
          */
         "message"?: string;
     }
+    interface UvFile {
+        /**
+          * (optional) Hint for expected file type in file upload controls
+         */
+        "accept"?: string;
+        /**
+          * (optional) Media capture input method in file upload controls
+         */
+        "capture"?: string;
+        /**
+          * (optional) Whether the form control is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * (optional) Associates the control with a form element
+         */
+        "form"?: string;
+        /**
+          * (optional) Id of the form control
+         */
+        "inputId"?: string;
+        /**
+          * (optional) Value of the id attribute of the <datalist> of autocomplete options
+         */
+        "list"?: string;
+        /**
+          * (optional) Whether to allow multiple values
+         */
+        "multiple"?: boolean;
+        /**
+          * (optional) Name of the form control. Submitted with the form as part of a name/value pair
+         */
+        "name"?: string;
+        /**
+          * (optional) A value is required or must be checked for the form to be submittable
+         */
+        "required"?: boolean;
+    }
     interface UvInput {
         /**
           * (optional) Whether the form control is disabled
@@ -287,6 +325,10 @@ export interface UvColorCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUvColorElement;
 }
+export interface UvFileCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUvFileElement;
+}
 export interface UvInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUvInputElement;
@@ -349,6 +391,23 @@ declare global {
     var HTMLUvFieldElement: {
         prototype: HTMLUvFieldElement;
         new (): HTMLUvFieldElement;
+    };
+    interface HTMLUvFileElementEventMap {
+        "updated": string;
+    }
+    interface HTMLUvFileElement extends Components.UvFile, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUvFileElementEventMap>(type: K, listener: (this: HTMLUvFileElement, ev: UvFileCustomEvent<HTMLUvFileElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUvFileElementEventMap>(type: K, listener: (this: HTMLUvFileElement, ev: UvFileCustomEvent<HTMLUvFileElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUvFileElement: {
+        prototype: HTMLUvFileElement;
+        new (): HTMLUvFileElement;
     };
     interface HTMLUvInputElementEventMap {
         "updated": string;
@@ -423,6 +482,7 @@ declare global {
         "uv-checkbox": HTMLUvCheckboxElement;
         "uv-color": HTMLUvColorElement;
         "uv-field": HTMLUvFieldElement;
+        "uv-file": HTMLUvFileElement;
         "uv-input": HTMLUvInputElement;
         "uv-numberinput": HTMLUvNumberinputElement;
         "uv-radio": HTMLUvRadioElement;
@@ -523,6 +583,45 @@ declare namespace LocalJSX {
           * (optional) The mesage of the field.
          */
         "message"?: string;
+    }
+    interface UvFile {
+        /**
+          * (optional) Hint for expected file type in file upload controls
+         */
+        "accept"?: string;
+        /**
+          * (optional) Media capture input method in file upload controls
+         */
+        "capture"?: string;
+        /**
+          * (optional) Whether the form control is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * (optional) Associates the control with a form element
+         */
+        "form"?: string;
+        /**
+          * (optional) Id of the form control
+         */
+        "inputId"?: string;
+        /**
+          * (optional) Value of the id attribute of the <datalist> of autocomplete options
+         */
+        "list"?: string;
+        /**
+          * (optional) Whether to allow multiple values
+         */
+        "multiple"?: boolean;
+        /**
+          * (optional) Name of the form control. Submitted with the form as part of a name/value pair
+         */
+        "name"?: string;
+        "onUpdated"?: (event: UvFileCustomEvent<string>) => void;
+        /**
+          * (optional) A value is required or must be checked for the form to be submittable
+         */
+        "required"?: boolean;
     }
     interface UvInput {
         /**
@@ -726,6 +825,7 @@ declare namespace LocalJSX {
         "uv-checkbox": UvCheckbox;
         "uv-color": UvColor;
         "uv-field": UvField;
+        "uv-file": UvFile;
         "uv-input": UvInput;
         "uv-numberinput": UvNumberinput;
         "uv-radio": UvRadio;
@@ -740,6 +840,7 @@ declare module "@stencil/core" {
             "uv-checkbox": LocalJSX.UvCheckbox & JSXBase.HTMLAttributes<HTMLUvCheckboxElement>;
             "uv-color": LocalJSX.UvColor & JSXBase.HTMLAttributes<HTMLUvColorElement>;
             "uv-field": LocalJSX.UvField & JSXBase.HTMLAttributes<HTMLUvFieldElement>;
+            "uv-file": LocalJSX.UvFile & JSXBase.HTMLAttributes<HTMLUvFileElement>;
             "uv-input": LocalJSX.UvInput & JSXBase.HTMLAttributes<HTMLUvInputElement>;
             "uv-numberinput": LocalJSX.UvNumberinput & JSXBase.HTMLAttributes<HTMLUvNumberinputElement>;
             "uv-radio": LocalJSX.UvRadio & JSXBase.HTMLAttributes<HTMLUvRadioElement>;
